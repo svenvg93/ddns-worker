@@ -19,7 +19,7 @@ A lightweight Dynamic DNS worker built on [Cloudflare Workers](https://workers.c
 ### 1. Clone and install
 
 ```bash
-git clone https://github.com/your-username/ddns-worker
+git clone https://github.com/svenvg93/ddns-worker
 cd ddns-worker
 npm install
 ```
@@ -49,17 +49,19 @@ wrangler secret put CF_API_TOKEN    # Cloudflare API token with DNS Edit permiss
 npm run deploy
 ```
 
-## Router configuration
+## Verify
 
-In your router's custom DDNS settings:
+Test your deployment with curl:
 
-| Field | Value |
-|-------|-------|
-| Connection Type | `HTTPS` |
-| URL Update | `ddns.yourdomain.com?hostname=home.yourdomain.com` |
-| Hostname | `home.yourdomain.com` |
-| Username | *(your `DDNS_USERNAME`)* |
-| Password | *(your `DDNS_PASSWORD`)* |
+```bash
+curl "https://ddns.yourdomain.com?hostname=home.yourdomain.com" -u "username:password"
+```
+
+Expected response:
+
+```json
+{"success":true,"message":"Updated home.yourdomain.com","clientIP":"<your_public_ip>"}
+```
 
 ## Local development
 
