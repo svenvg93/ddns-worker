@@ -1,0 +1,13 @@
+name = "ddns-worker"
+main = "src/index.ts"
+compatibility_date = "2024-03-05"
+
+# Disable default environments to keep it clean
+workers_dev = false
+preview_urls = false
+
+# The subdomain your router will use to connect to the Worker
+# Replace with your own custom domain
+[[routes]]
+pattern = "ddns.yourdomain.com"
+custom_domain = true
